@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./micro-date-picker.css"/>
+  <script src="./micro-date-picker.js"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: #f7fafc;
+    }
+    .container {
+      max-width: 64rem;
+      margin: auto;
+    }
+    .float-right {
+      float: right;
+    }
+    #target {
+      padding: .5rem;
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a id="target-right" href="#" class="float-right">Click Here for Right-Aligned example</a>
+    <h1>Click Here!</h1>
+    <input id="target" type="text"/>
+  </div>
+  <script>
+    function pad(_op) {
+      var op = String(_op);
+      return "00".slice(op.length) + op;
+    }
+    DatePicker(
+      document.querySelector("h1"),
+      function (date) {
+        document.getElementById("target").value = pad(date.getMonth()) + "/" + pad(date.getDate()) + "/" + date.getFullYear();
+      }
+    );
+    DatePicker(
+      document.getElementById("target-right"),
+      function (date) {
+        document.getElementById("target").value = pad(date.getMonth()) + "/" + pad(date.getDate()) + "/" + date.getFullYear();
+      },
+      true
+    );
+  </script>
+</body>
+</html>
